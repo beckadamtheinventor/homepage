@@ -1,5 +1,5 @@
 
-div#content {
+div.content {
 	background: linear-gradient(#666, #888 6%, #666 90%);
 	color: black;
 	position: fixed;
@@ -14,11 +14,11 @@ div#content {
 }
 
 html {
-	background: repeating-linear-gradient(90deg, #802, #862 25%, #802 50%);
+	background: #963;
 	background-repeat: repeat;
 }
 
-div#left-bar {
+div.left-bar {
 	color: #212;
 	position: fixed;
 	top: 0;
@@ -30,16 +30,7 @@ div#left-bar {
 	padding-left: 1%;
 	padding-right: 1%;
 }
-a {
-	color: #AAA;
-}
-a:visited {
-	color: #FFF;	
-}
-a:hover {
-	color: #AFA;
-}
-div#top-bar {
+div.top-bar {
 	position: fixed;
 	top: 0;
 	height: 10%;
@@ -48,10 +39,27 @@ div#top-bar {
 	color: #EDD;
 	text-align: center;
 }
-div#author {
+div.author {
 	position: fixed;
 	top: 91%;
 	height: 6.5%;
 	font-size: 11;
+	color: white;
+}
+a {
+	color: #ddf;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:visited {
+	color: #ddf;
 }
 
+
+
+div.social-media img {
+	width: 100px;
+	height: 120px;
+}
