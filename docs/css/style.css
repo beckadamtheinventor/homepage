@@ -5,12 +5,11 @@ div.content {
 	position: fixed;
 	top: 10%;
 	height: 81.5%;
-	left: 15%;
-	width: 85%;
+	left: 5%;
+	width: 90%;
 	padding: 2%;
-	border-top: 1px solid black;
-	border-left: 1px solid black;
-	overflow-y: scroll;
+	border: 1px solid black;
+	overflow-y: hidden;
 }
 
 html {
@@ -24,7 +23,7 @@ div.left-bar {
 	top: 0;
 	height: 91%;
 	left: 0;
-	width: 13%;
+	width: 8%;
 	color: #EDD;
 	padding-top: 9%;
 	padding-left: 1%;
@@ -41,10 +40,10 @@ div.top-bar {
 }
 div.author {
 	position: fixed;
-	top: 98%;
-	height: 6.5%;
-	font-size: 11;
-	color: white;
+	top: 96%;
+	left: 80%;
+	height: 2%;
+	color: black;
 }
 a {
 	color: #ddf;
