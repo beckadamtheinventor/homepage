@@ -50,3 +50,7 @@ div.social-media img {
 	max-width: 80px;
 	max-height: 80px;
 }
+
+img {
+	padding: 20px;
+}
