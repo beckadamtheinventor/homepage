@@ -1,29 +1,31 @@
 
-div.content {
-	background: linear-gradient(#666, #888 6%, #666 90%);
-	color: black;
-	position: fixed;
-	top: 10%;
-	height: 81.5%;
-	left: 15%;
-	width: 85%;
-	padding: 2%;
-	border-top: 1px solid black;
-	border-left: 1px solid black;
-	overflow-y: scroll;
+div {
+	margin: auto;
 }
 
-html {
-	background: #963;
+div.content {
+	background: silver;
+	color: black;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	padding: 15px;
+}
+
+body {
+	background: #245;
+	background-image: url();
 	background-repeat: repeat;
 }
 
+main {
+	font-size: 1.1em;
+	margin: auto;
+	padding: 1% 5%;
+}
+
+
 div.left-bar {
 	color: #212;
-	position: fixed;
-	top: 0;
-	height: 91%;
-	left: 0;
 	width: 13%;
 	color: #EDD;
 	padding-top: 9%;
@@ -31,35 +33,22 @@ div.left-bar {
 	padding-right: 1%;
 }
 div.top-bar {
-	position: fixed;
-	top: 0;
-	height: 10%;
-	left: 15%;
-	width: 85%;
 	color: #EDD;
 	text-align: center;
 }
 div.author {
-	position: fixed;
-	top: 98%;
-	height: 6.5%;
-	font-size: 11;
+	font-size: 1em;
 	color: white;
 }
 a {
-	color: #ddf;
+	color: blue;
 	text-decoration: none;
 }
 a:hover {
 	text-decoration: underline;
 }
-a:visited {
-	color: #ddf;
-}
-
-
 
 div.social-media img {
-	width: 100px;
-	height: 100px;
+	max-width: 80px;
+	max-height: 80px;
 }
