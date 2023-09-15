@@ -1,4 +1,17 @@
 
+html {
+	padding: 1% 5%;
+	margin: 1%;
+}
+
+body {
+	background: #245;
+}
+
+main {
+	font-size: 1.1em;
+}
+
 div {
 	margin: auto;
 }
@@ -11,17 +24,6 @@ div.content {
 	padding: 15px;
 }
 
-body {
-	background: #245;
-}
-
-main {
-	font-size: 1.1em;
-	margin: auto;
-	padding: 1% 5%;
-}
-
-
 div.left-bar {
 	color: #212;
 	width: 13%;
@@ -32,7 +34,6 @@ div.left-bar {
 }
 div.top-bar {
 	color: #EDD;
-	text-align: center;
 }
 div.author {
 	font-size: 1em;
