@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Return Old Discord UI</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<div class="top-bar">
+				<h1>Return the Old Discord UI on Mobile</h1>
+				Natively revert Discord's new mobile UI change!<br>
+			</div>
+		</header>
+		<main>
+			<div class="content">
+				<p>
+					<h2>Instructions</h2>
+					Open Discord in a web browser or install a Discord patch such as <a href="https://vencord.dev/">Vencord</a>.<br>
+					Open the developer console using <a class="code">Control+Shift+I</a><br>
+					Copy-Paste the following code snippet into the console:
+					<div class="code">
+						let wpRequire;<br>
+						window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { wpRequire = req; }]);<br>
+						<br>
+						let UserSettingsActions = Object.values(wpRequire.c).find(x => x?.exports?.PreloadedUserSettingsActionCreators).exports;<br>
+						let ProtobufTypes = Object.values(wpRequire.c).find(x => x?.exports?.BoolValue).exports;<br>
+						<br>
+						UserSettingsActions.PreloadedUserSettingsActionCreators.updateAsync("appearance", data => {<br>
+							data.mobileRedesignDisabled = ProtobufTypes.BoolValue.create({value: true})<br>
+						}, UserSettingsActions.UserSettingsDelay.INFREQUENT_USER_ACTION)<br>
+					</div><br>
+					Press <a class="code">Enter</a> and watch as the old mobile UI returns in all its glory.
+				</p>
+				<hr>
+				<p>
+					<h2>Credits</h2>
+					<a href="https://gist.github.com/aamiaa/fbf6e51dbb8875a781a3d8d76fc3f3e7">GitHub Gist</a> where this snippet is from.
+				</p>
+			</div>
+		</main>
+	</body>
+</html>
