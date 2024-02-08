@@ -16,6 +16,19 @@ div {
 	margin: auto;
 }
 
+.code {
+	font-family: monospace;
+	background: #aaa;
+	color: #222;
+	border: 1px solid black;
+	margin: 3px;
+	padding: 3px;
+}
+
+div.code {
+	padding: 10px;
+}
+
 div.content {
 	background: silver;
 	color: black;
