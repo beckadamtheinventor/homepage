@@ -21,8 +21,29 @@ div {
 	background: #aaa;
 	color: #222;
 	border: 1px solid black;
-	margin: 3px;
-	padding: 3px;
+	margin: 4px;
+	padding: 5px;
+}
+
+.error {
+	font-family: monospace;
+	background: #bbb;
+	color: #C00;
+	border: 1px solid #C00;
+	margin: 4px;
+	padding: 5px;
+}
+
+.rightalign {
+	text-align: right;
+}
+
+.quote {
+	background: #bbb;
+	color: #222;
+	border: 1px solid black;
+	margin: 4px;
+	padding: 5px;
 }
 
 div.code {
@@ -52,12 +73,9 @@ div.author {
 	font-size: 1em;
 	color: white;
 }
-a {
-	color: blue;
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: underline;
+
+.author a {
+	color: white;
 }
 
 div.social-media img {
