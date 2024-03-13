@@ -38,7 +38,7 @@ div {
 	text-align: right;
 }
 
-.quote {
+.bordered {
 	background: #bbb;
 	color: #222;
 	border: 1px solid black;

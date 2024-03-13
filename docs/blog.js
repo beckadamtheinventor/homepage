@@ -4,7 +4,7 @@ async function load(p, e) {
 			return r.ok ? r.text() : `<span class=\"error\">Error ${r.status} loading post \"${p}\"</span>`
 		})
 		.then(t => {
-			e.innerHTML += "<p>" + t.split("\n").join("<br>") + "</p><hr>"
+			e.innerHTML += "<b>" + p + "</b><p class=\"bordered\">" + t.split("\n").join("<br>") + "</p><hr>"
 		})
 }
 
@@ -21,7 +21,7 @@ async function loadPosts() {
 		.then(r => {
 			const t = r.split("\n")
 			let n = 0
-			for (let i=0; i<t.length; i++) {
+			for (let i=t.length-1; i>=0; i--) {
 				if (t[i].length > 0) {
 					load(t[i], e)
 					n++
