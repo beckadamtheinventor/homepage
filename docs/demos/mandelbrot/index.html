@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js Mandelbrot</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #1b1b1b;
+	  color: white;
+    }
+  </style>
+  <script src="../p5.min.js"></script>
+  <!-- <script src="../addons/p5.sound.js"></script> -->
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+  <header>
+  <p><h2>Mandelbrot fractal implementation with p5.js</h2>by Adam "beckadamtheinventor" Beckingham</p>
+  <p>Based on <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">this</a> Wikipedia page</p>
+  X <input value="-0.31" type="number" id="position_x"></input>
+  Y <input value="-0.87" type="number" id="position_y"></input>
+  Scale <input value="0.05" type="number" id="scale"></input>
+  Iterations <input value="80" type="number" id="iterations"></input>
+  Value Exponent <input value="1" type="number" id="exponent"></input>
+  Pixel Step <input value="1" type="number" id="step"></input>
+  </header>
+  <main>
+  </main>
+  <footer>
+  <p>
+  <h3>Samples</h3>
+  <img width=256 src="capture2.png" alt="mandelbrot fractal sample" alt="mandelbrot fractal sample"></img>
+  <img width=256 src="capture3.png" alt="mandelbrot fractal sample" alt="mandelbrot fractal sample"></img>
+  </p>
+  </footer>
+</body>
+
+</html>
