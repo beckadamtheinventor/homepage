@@ -19,7 +19,7 @@ function draw() {
 		currentWidth = w;
 		currentHeight = h;
 		updateCanvas(w, h);
-		console.log("updated canvas size to " + w + ", " + h);
+		// console.log("updated canvas size to " + w + ", " + h);
 		redraw = true;
 	}
 
@@ -56,8 +56,8 @@ function draw() {
 		redraw = true;
 	}
 	if (redraw || keyIsDown(ENTER)) {
-		console.log("redrawing");
-		console.log(document.getElementById("position_x").value, document.getElementById("position_y").value, document.getElementById("scale").value)
+		// console.log("redrawing");
+		// console.log(document.getElementById("position_x").value, document.getElementById("position_y").value, document.getElementById("scale").value)
 		drawfractal();
 	}
 }
