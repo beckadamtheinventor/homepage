@@ -1,5 +1,5 @@
 # Beck's Homepage
 
-Can be found (Here)[https://abeck.pw].
+Can be found [https://abeck.pw](Here).
 
 All rights reserved.
