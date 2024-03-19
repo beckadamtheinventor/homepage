@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, gzip
 
 class CompressedJS:
 	_steps = [
@@ -113,6 +113,7 @@ class CompressedJS:
 		[b"`", b"``"],
 	]
 	_template = b"var s=\"$$D\".split(\"\t\"),d=\"$$V\"\nfor(var i of s){d=d.replaceAll('`'+i.slice(0,2),i.slice(2))};setTimeout(d,0)"
+	_gzipstub = b"fetch('$$F').then(d=>d.body.pipeThrough(new DecompressionStream('gzip'))).then(d=>setTimeout(d,0))";
 	def __init__(self):
 		self.data = ""
 		self.usedSteps = {k:0 for k,_ in CompressedJS._steps}
@@ -131,7 +132,7 @@ class CompressedJS:
 		src = src.replace(b"\\", b"\\\\").replace(b'"', b'\\"').replace(b'\n', b'\\n')
 		data = []
 		while i < len(src):
-			if i >= progress+16384:
+			if i >= progress+65536:
 				progress = i
 				print(f"{str(round(100*i/len(src), 2))}% complete")
 			processed = False
@@ -159,19 +160,31 @@ class CompressedJS:
 		return CompressedJS._template.replace(b"$$D", b"\t".join(steps), 1).replace(b"$$V", self.data, 1)
 
 	def write(self, fd):
-		f.write(self.compile())
+		fd.write(self.compile())
+
+	def writeBinary(self, name):
+		with gzip.open(name, "w") as fd:
+			fd.write(self.compile())
+		with open(name, "rb") as fd:
+			fd.seek(0, 2)
+			return fd.tell()
+
+	def writeStub(self, fd, name):
+		fd.write(CompressedJS._gzipstub.replace(b"$$F", bytes(name, 'UTF-8'), 1))
 
 if __name__=='__main__':
 	if len(sys.argv) < 3:
 		print(f"Usage, {sys.argv[0]} src.js dest.js")
 		exit(0)
-	with open(sys.argv[1], "rb") as f:
-		data = f.read()
+	with open(sys.argv[1], "rb") as fd:
+		data = fd.read()
 	oldSize = len(data)
 	cjs = CompressedJS()
+	print("Step 1/2")
 	cjs.parse(data)
-	with open(sys.argv[2], "wb") as f:
-		cjs.write(f)
-		newSize = f.tell()
+	print("Step 2/2")
+	with open(sys.argv[2], "wb") as fd:
+		cjs.write(fd)
+		newSize = fd.tell()
 
 	print(f"Success! Old size: {oldSize} New size: {newSize}")
