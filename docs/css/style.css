@@ -44,10 +44,13 @@ main {
 	text-align: right;
 }
 
-.bordered {
+.flex {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+}
+
+.bordered {
 	background: #bbb;
 	color: #222;
 	border: 1px solid black;
@@ -105,10 +108,12 @@ div.social-media img {
 }
 
 img {
-	margin: 1%;
+	width: 40%;
+	margin: 4.5%;
 	padding: auto;
 }
 
 .imagelike {
-	padding: 20px;
+	margin: 2%;
+	padding: auto;
 }
