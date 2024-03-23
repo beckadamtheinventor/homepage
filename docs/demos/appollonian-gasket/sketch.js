@@ -25,6 +25,7 @@ function mousePressed() {
 	if (mouseButton == CENTER) {
 		animationCenter[0] = mouseX;
 		animationCenter[1] = mouseY;
+		enable_animation = true;
 	}
 	if (mouseButton != LEFT) {
 		return;
