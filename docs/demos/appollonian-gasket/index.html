@@ -6,15 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>p5.js Appollonian Gasket</title>
   <style>
-    body {
-      padding: 1%;
-      margin: 0;
-      background-image: url("background.png");
+	body {
+	  padding: 1%;
+	  margin: 0;
+	  background-image: url("background.png");
 	  background-repeat: no-repeat;
 	  background-size: cover;
 	  color: white;
 	  overflow: hidden;
-    }
+	}
+	a {
+	  color: white;
+	}
   </style>
   <script src="../p5.compressed.js"></script>
   <!-- <script src="../addons/p5.sound.js"></script> -->
@@ -25,9 +28,11 @@
 
 <body>
   <header>
-  <p>Appollonian Gasket by Adam "beckadamtheinventor" Beckingham</p>
-  <p>Based on <a href="https://youtu.be/6UlGLB_jiCs">this</a> YouTube video</p>
-  <p>Click on the canvas to select two starting circles. The third circle will enclose the other two.</p>
+  <p>Appollonian Gasket by Adam "beckadamtheinventor" Beckingham<br>
+  Based on <a href="https://youtu.be/6UlGLB_jiCs">this</a> YouTube video<br>
+  Left-click on the canvas (black square) to select two starting points.<br>
+  Middle-mouse on the canvas to select a rotation point.</p>
+  <button id="animate" onclick="animateCircles()" hidden>Toggle animation</button>
   </header>
   <main>
   </main>

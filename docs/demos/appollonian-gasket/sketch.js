@@ -1,36 +1,62 @@
 
 const epsilon = 0.1;
-let circles = [];
+const WIDTH = 1024;
+const HEIGHT = 1024;
+const circles = [];
 let queue = [];
-let inputs = [];
+const inputs = [];
+const plotted = [];
 let hasfinishedinput = false;
 let maxradius = 0;
+const animationCenter = [WIDTH*0.5, HEIGHT*0.5];
+let enable_animation = false;
 
 function setup() {
-	createCanvas(512, 512);
+	pixelDensity(1);
+	createCanvas(WIDTH, HEIGHT);
+	document.getElementById("defaultCanvas0").style['height'] = "512px";
+	document.getElementById("defaultCanvas0").style['width'] = "512px";
 }
 
 function mousePressed() {
+	if (mouseX < 0 || mouseX >= WIDTH || mouseY < 0 || mouseY >= HEIGHT) {
+		return;
+	}
+	if (mouseButton == CENTER) {
+		animationCenter[0] = mouseX;
+		animationCenter[1] = mouseY;
+	}
+	if (mouseButton != LEFT) {
+		return;
+	}
 	if (hasfinishedinput) {
-		inputs = [];
+		inputs.length = 0;
 		hasfinishedinput = false;
 	}
 	if (inputs.length < 2) {
 		inputs.push(new Complex(mouseX, mouseY))
 	}
 	if (inputs.length >= 2 && !hasfinishedinput) {
-		circles = [];
-		queue = [];
+		plotted[0] = inputs[0];
+		plotted[1] = inputs[1];
+		circles.length = 0;
+		queue.length = 0;
 		let d = dist(inputs[0].a, inputs[0].b, inputs[1].a, inputs[1].b);
+		circles.push(new Circle(-1 / d, (inputs[0].a+inputs[1].a)*0.5, (inputs[0].b+inputs[1].b)*0.5));
 		circles.push(new Circle(2 / d, inputs[0].a, inputs[0].b));
 		circles.push(new Circle(2 / d, inputs[1].a, inputs[1].b));
-		circles.push(new Circle(-1 / d, (inputs[0].a+inputs[1].a)*0.5, (inputs[0].b+inputs[1].b)*0.5));
 		hasfinishedinput = true;
 		queue.push([circles[0], circles[1], circles[2]])
-		maxradius = max(circles[0].r, circles[1].r, circles[2].r);
-		for (let i=0; i<20; i++) {
+		maxradius = circles[0].r;
+		for (let i=0; i<8; i++) {
 			nextCircles();
 		}
+	}
+}
+
+function animateCircles() {
+	if (plotted.length >= 2) {
+		enable_animation = !enable_animation;
 	}
 }
 
@@ -53,7 +79,7 @@ function nextCircles() {
 
 function validateNewCircle(c4, c1, c2, c3) {
 	let d;
-	if (c4.r < 0.5) {
+	if (c4.r <= 0.75) {
 		return false;
 	}
 	for (let other of circles) {
@@ -71,10 +97,65 @@ function validateNewCircle(c4, c1, c2, c3) {
 
 function draw() {
 	background(0);
-	for (let circle of circles) {
-		circle.show((maxradius - circle.r)/maxradius * 200 + 30);
+	stroke(0);
+	// loadPixels();
+	for (let c4 of circles) {
+		if (c4.x <= -2*c4.r || c4.x >= WIDTH+2*c4.r) {
+			continue;
+		}
+		if (c4.y <= -2*c4.r || c4.y >= WIDTH+2*c4.r) {
+			continue;
+		}
+		strokeWeight(min(3, max(1, 5 * c4.r / maxradius)));
+		if (c4.r < maxradius) {
+			c4.show(pow((maxradius - c4.r)/maxradius, 3) * 200 + 20);
+		} else {
+			c4.show(255);
+		}
+	}
+	// updatePixels();
+	if (inputs.length == 1) {
+		stroke(0);
+		strokeWeight(1);
+		fill(0,180,0);
+		circle(inputs[0].a, inputs[0].b, 50);
+		stroke(0,180,0);
+		strokeWeight(10);
+		line(mouseX, mouseY, inputs[0].a, inputs[0].b);
+	}
+	if (plotted.length >= 2) {
+		document.getElementById("animate").hidden = false;
+	}
+	
+	if (enable_animation) {
+		stepAnimation();
 	}
 }
+
+function stepAnimation() {
+	for (let circle of circles) {
+		const c = Math.cos(PI/1000);
+		const s = Math.sin(PI/1000);
+		let x = (circle.x - animationCenter[0]) * 1.0 / WIDTH;
+		let y = (circle.y - animationCenter[1]) * 1.0 / HEIGHT;
+		let tmp = c*x - s*y;
+		y = s*x + c*y;
+		x = tmp;
+		circle.position(x*WIDTH + animationCenter[0], y*HEIGHT + animationCenter[1]);
+	}
+}
+
+/* Unused right now. Eventually might be able to write a more efficient circle routine... */
+function px(x, y, c) {
+	if (x>=0 && x<WIDTH && y>=0 && y<HEIGHT) {
+		let i = (int(y)*WIDTH + int(x)) * 4;
+		pixels[i+0] = c;
+		pixels[i+1] = c;
+		pixels[i+2] = c;
+		pixels[i+3] = 255;
+	}
+}
+
 
 function descartes(c1, c2, c3) {
 	let k1 = c1.b;

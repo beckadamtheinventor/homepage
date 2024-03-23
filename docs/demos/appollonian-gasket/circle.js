@@ -16,8 +16,14 @@ class Circle {
 	  return dist(this.center.a, this.center.b, other.center.a, other.center.b);
   }
   show(c) {
-    stroke(0);
     fill(c);
-    circle(this.x, this.y, this.r * 2)
+	circle(this.x, this.y, this.r*2);
+	// const r2 = this.r*this.r;
+    // for (let y=-this.r; y<this.r; y++) {
+		// const w = pow(r2 - y*y, 0.5) - 1;
+		// for (let x=-w; x<w; x++) {
+			// px(this.x + x, this.y + y, c);
+		// }
+	// }
   }
 }
