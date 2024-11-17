@@ -67,7 +67,7 @@ function setup() {
 		exp = p.get("exp")
 	} catch (ignored) {}
 	
-	console.log(s, x, y, vmin, vmax, vscl, oscl, exp)
+	// console.log(s, x, y, vmin, vmax, vscl, oscl, exp)
 	
 	if (s != null) { document.getElementById("scale").setAttribute("value", s) }
 	if (x != null) { document.getElementById("position_x").setAttribute("value", x) }
