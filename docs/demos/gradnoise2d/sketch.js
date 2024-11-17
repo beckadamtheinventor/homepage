@@ -69,14 +69,14 @@ function setup() {
 	
 	// console.log(s, x, y, vmin, vmax, vscl, oscl, exp)
 	
-	if (s != null) { document.getElementById("scale").setAttribute("value", s) }
-	if (x != null) { document.getElementById("position_x").setAttribute("value", x) }
-	if (y != null) { document.getElementById("position_y").setAttribute("value", y) }
-	if (vmin != null) { document.getElementById("minvalue").setAttribute("value", vmin) }
-	if (vmax != null) { document.getElementById("maxvalue").setAttribute("value", vmax) }
-	if (vscl != null) { document.getElementById("valuescale").setAttribute("value", vscl) }
-	if (oscl != null) { document.getElementById("finalscale").setAttribute("value", oscl) }
-	if (exp != null) { document.getElementById("exponent").setAttribute("value", exp) }
+	if (s) { document.getElementById("scale").setAttribute("value", s) }
+	if (x) { document.getElementById("position_x").setAttribute("value", x) }
+	if (y) { document.getElementById("position_y").setAttribute("value", y) }
+	if (vmin) { document.getElementById("minvalue").setAttribute("value", vmin) }
+	if (vmax) { document.getElementById("maxvalue").setAttribute("value", vmax) }
+	if (vscl) { document.getElementById("valuescale").setAttribute("value", vscl) }
+	if (oscl) { document.getElementById("finalscale").setAttribute("value", oscl) }
+	if (exp) { document.getElementById("exponent").setAttribute("value", exp) }
 
 	updateUrlAndPage()
 
