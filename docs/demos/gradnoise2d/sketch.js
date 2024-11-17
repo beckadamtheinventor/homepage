@@ -32,7 +32,7 @@ function mouseWheel(event) {
 		redraw = true
 		return false
 	// }
-	return true
+	// return true
 }
 
 function draw() {
@@ -54,15 +54,20 @@ function draw() {
 }
 
 function setup() {
-	let p = new URLSearchParams(window.location.href)
-	let x = float(p.get("x"))
-	let y = float(p.get("y"))
-	let s = float(p.get("s"))
-	let vmin = float(p.get("vmin"))
-	let vmax = float(p.get("vmax"))
-	let vscl = float(p.get("vscl"))
-	let oscl = float(p.get("oscl"))
-	let exp = float(p.get("exp"))
+	
+	let x, y, s, vmin, vmax, vscl, oscl, exp
+	x = y = s = vmin = vmax = vscl = pscl = exp = null
+	try {
+		let p = new URLSearchParams(window.location.href)
+		x = float(p.get("x"))
+		y = float(p.get("y"))
+		s = float(p.get("s"))
+		vmin = float(p.get("vmin"))
+		vmax = float(p.get("vmax"))
+		vscl = float(p.get("vscl"))
+		oscl = float(p.get("oscl"))
+		exp = float(p.get("exp"))
+	} catch (ignored) {}
 	
 	if (s == null) {
 		s = 1.0 / currentWidth;
