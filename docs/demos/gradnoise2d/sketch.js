@@ -54,24 +54,20 @@ function draw() {
 }
 
 function setup() {
-	
 	let x, y, s, vmin, vmax, vscl, oscl, exp
-	x = y = s = vmin = vmax = vscl = pscl = exp = null
 	try {
 		let p = new URLSearchParams(window.location.href)
-		x = float(p.get("x"))
-		y = float(p.get("y"))
-		s = float(p.get("s"))
-		vmin = float(p.get("vmin"))
-		vmax = float(p.get("vmax"))
-		vscl = float(p.get("vscl"))
-		oscl = float(p.get("oscl"))
-		exp = float(p.get("exp"))
+		x = p.get("x")
+		y = p.get("y")
+		s = p.get("s")
+		vmin = p.get("vmin")
+		vmax = p.get("vmax")
+		vscl = p.get("vscl")
+		oscl = p.get("oscl")
+		exp = p.get("exp")
 	} catch (ignored) {}
 	
-	if (s == null) {
-		s = 1.0 / currentWidth;
-	}
+	console.log(s, x, y, vmin, vmax, vscl, oscl, exp)
 	
 	if (s != null) { document.getElementById("scale").setAttribute("value", s) }
 	if (x != null) { document.getElementById("position_x").setAttribute("value", x) }
