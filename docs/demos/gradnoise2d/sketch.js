@@ -15,9 +15,13 @@ let step = 1
 // }
 
 function mouseDragged() {
+	translate(movedX, movedY);
+}
+
+function translate(x, y) {
 	const s = scale
-	document.getElementById("position_x").setAttribute("value", offset[0] - s*movedX)
-	document.getElementById("position_y").setAttribute("value", offset[1] - s*movedY)
+	document.getElementById("position_x").setAttribute("value", offset[0] - s*x)
+	document.getElementById("position_y").setAttribute("value", offset[1] - s*y)
 	redraw = true
 	return true
 }
@@ -77,6 +81,9 @@ function setup() {
 	if (vscl) { document.getElementById("valuescale").setAttribute("value", vscl) }
 	if (oscl) { document.getElementById("finalscale").setAttribute("value", oscl) }
 	if (exp) { document.getElementById("exponent").setAttribute("value", exp) }
+
+	// console.log(s, x, y, vmin, vmax, vscl, oscl, exp)
+
 
 	updateUrlAndPage()
 
