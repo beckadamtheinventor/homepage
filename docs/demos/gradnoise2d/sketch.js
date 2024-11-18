@@ -15,13 +15,9 @@ let step = 1
 // }
 
 function mouseDragged() {
-	translate(movedX, movedY);
-}
-
-function translate(x, y) {
 	const s = scale
-	document.getElementById("position_x").setAttribute("value", offset[0] - s*x)
-	document.getElementById("position_y").setAttribute("value", offset[1] - s*y)
+	document.getElementById("position_x").setAttribute("value", offset[0] - s*movedX)
+	document.getElementById("position_y").setAttribute("value", offset[1] - s*movedY)
 	redraw = true
 	return true
 }
