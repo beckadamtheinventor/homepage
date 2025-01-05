@@ -101,19 +101,18 @@ a:hover {
 	color: #888;
 }
 
-
-div.social-media img {
-	max-width: 80px;
-	max-height: 80px;
+img {
+	width: 250px;
+	margin: 10px;
+	padding: auto;
 }
 
-img {
-	width: 40%;
-	margin: 4.5%;
-	padding: auto;
+
+div.social-media img {
+	max-width: 100px;
+	max-height: 100px;
 }
 
 .imagelike {
 	margin: 2%;
-	padding: auto;
 }
